@@ -1,0 +1,83 @@
+<p>
+  editor works!
+</p>
+
+<!-- Create the toolbar container -->
+<div id="toolbar">
+  <span class="ql-formats">
+    <button class="ql-background">background</button>
+    <button class="ql-bold">Bold</button>
+    <button class="ql-color">color</button>
+
+    <select class="ql-font">
+      <option selected></option>
+      <option value="serif"></option>
+      <option value="monospace"></option>
+    </select>
+
+    <button class="ql-code">code</button>
+    <button class="ql-italic">Italic</button>
+    <button class="ql-link">Link</button>
+
+    <select class="ql-size">
+      <option value="small"></option>
+      <!-- Note a missing, thus falsy value, is used to reset to default -->
+      <option selected></option>
+      <option value="large"></option>
+      <option value="huge"></option>
+    </select>
+
+    <button class="ql-strike">strike</button>
+
+    <button class="ql-script" value="sub"></button>
+    <button class="ql-script" value="super"></button>
+
+    <button class="ql-underline">Link</button>
+  </span>
+
+  <span class="ql-formats">
+    <button class="ql-blockquote">blockquote</button>
+
+    <button class="ql-header" value="H1"></button>
+    <button class="ql-header" value="H2"></button>
+    <button class="ql-header" value="H3"></button>
+
+    <select class="ql-indent">
+      <option selected></option>
+      <option [value]="1"></option>
+      <option [value]="2"></option>
+      <option [value]="3"></option>
+    </select>
+    
+    <button class="ql-list" value="ordered"></button>
+    <button class="ql-list" value="bullet"></button>
+    <button class="ql-list" value="checked"></button>
+
+    <select class="ql-align">
+      <option selected></option>
+      <option value="center"></option>
+      <option value="right"></option>
+      <option value="justify"></option>
+    </select>
+
+    <button class="ql-direction">direction</button>
+    <button class="ql-code-block">code-block</button>
+  </span>
+
+  <span class="ql-formats">
+    <button class="ql-formula">formula</button>
+    <button class="ql-image">Image</button>
+    <button class="ql-video">video</button>
+
+    <button class="ql-better-table">better-table</button>
+  </span>
+</div>
+
+<!-- Create the editor container -->
+<div id="editor">
+  <p>Hello World!</p>
+</div>
+
+<button (click)="insertTable()">插入表格</button>
+
+<router-outlet></router-outlet>
