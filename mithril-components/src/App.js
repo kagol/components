@@ -5,7 +5,7 @@ import { AppModel } from './app.model';
 import { lists } from './db';
 
 const defaultCurrent = 1;
-const defaultPageSize = 3;
+const defaultPageSize = 2;
 
 export const App = {
   oninit: function() {

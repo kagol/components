@@ -6,6 +6,7 @@ import { generatePages } from '../../util';
 
 export const Pagination = {
   oninit: function(vnode) {
+    // 接口定义 vnode.attrs
     const { total, defaultPageSize, defaultCurrent } = vnode.attrs;
     PagerModel.pages = generatePages(total, defaultPageSize);
     PagerModel.setPage(defaultCurrent || 1);

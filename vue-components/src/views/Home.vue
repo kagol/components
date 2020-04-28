@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       defaultCurrent: 1,
-      pageSize: 4,
+      pageSize: 2,
       total: lists.length,
       dataSource: [],
     }
@@ -35,8 +35,6 @@ export default {
   },
   methods: {
     onChange(current) {
-      console.log('home current:', current);
-      console.log('home this.dataSource:', this.dataSource);
       this.setLists(current, this.pageSize);
     },
     setLists: function(page, pageSize) {

@@ -17,6 +17,7 @@ export default {
     Button,
     Pager,
   },
+  // 接口定义 props
   props: {
     defaultCurrent: {
       type: Number,
