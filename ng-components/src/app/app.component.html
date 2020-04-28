@@ -24,4 +24,12 @@
   <a routerLink="/editor/quick-menu">Quick Menu component</a>
 </nav>
 
+<d-list [dataSource]="dataSource"></d-list>
+<d-pagination 
+  [total]="total" 
+  [defaultCurrent]="defaultCurrent" 
+  [defaultPageSize]="pageSize"
+  (onChange)="onChange($event)"
+></d-pagination>
+
 <router-outlet></router-outlet>

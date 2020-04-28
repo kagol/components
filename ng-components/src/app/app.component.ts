@@ -1,12 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { lists } from './db';
+import { chunk } from './util';
+
+const defaultCurrent = 1;
+const defaultPageSize = 2;
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'my-dream-app by kagol';
+  defaultCurrent = defaultCurrent;
+  pageSize = defaultPageSize;
+  total = lists.length;
+  dataSource = [];
+
+  ngOnInit() {
+    this.dataSource = chunk(lists, this.pageSize)[this.defaultCurrent - 1];
+  }
+
+  onChange(current) { // 页码改变
+    this.setLists(current, this.pageSize);
+  }
+
+  setLists(page, pageSize) {
+    this.dataSource = chunk(lists, pageSize)[page - 1];
+  }
 }
 
 /*
