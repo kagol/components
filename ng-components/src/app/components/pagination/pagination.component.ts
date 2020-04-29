@@ -2,13 +2,8 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
   selector: 'd-pagination',
-  template: `
-    <div>
-      <d-button class="btn-prev" (btnClick)="prevPage()">&lt;</d-button>
-      <d-pager [totalPage]="totalPage" [defaultCurrent]="defaultCurrent" (onChange)="onPageChange"></d-pager>
-      <d-button class="btn-next" (btnClick)="nextPage()">></d-button>
-    </div>
-  `,
+  templateUrl: './pagination.component.html',
+  styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent {
   @Input() total: number;
@@ -21,7 +16,7 @@ export class PaginationComponent {
     return Math.ceil(this.total / this.defaultPageSize);
   }
 
-  current = 1;
+  current = this.defaultCurrent;
 
   prevPage() {
     if (this.current < 2) return;
@@ -35,7 +30,7 @@ export class PaginationComponent {
     this.onChange.emit(this.current);
   }
 
-  onPageChange() {
-
+  onPageChange(current) {
+    this.current = current;
   }
 }

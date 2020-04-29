@@ -1,0 +1,31 @@
+@import '../../../assets/common.scss';
+
+.m-pager {
+  list-style: none;
+  padding: 0;
+  li {
+    @include page-button;
+
+    &.active {
+      background-color: $blue;
+      color: #fff;
+      cursor: default;
+    }
+
+    &:not(.active):hover {
+      color: $blue;
+    }
+
+    &.more {
+      &::before {
+        content: '...';
+      }
+      &.left:hover::before {
+        content: '<<';
+      }
+      &.right:hover::before {
+        content: '>>';
+      }
+    }
+  }
+}

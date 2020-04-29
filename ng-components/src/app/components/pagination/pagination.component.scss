@@ -1,0 +1,10 @@
+@import '../../../assets/common.scss';
+
+.m-pagination {
+  display: flex;
+  align-items: center;
+  .btn-prev, .btn-next {
+    @include page-button;
+    border: none;
+  }
+}

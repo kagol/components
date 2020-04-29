@@ -1,0 +1,15 @@
+<div class="m-pagination">
+  <d-button 
+    class="btn-prev" 
+    (btnClick)="prevPage()"
+  >&lt;</d-button>
+  <d-pager 
+    [totalPage]="totalPage" 
+    [defaultCurrent]="current" 
+    (onChange)="onPageChange($event)"
+  ></d-pager>
+  <d-button 
+    class="btn-next" 
+    (btnClick)="nextPage()"
+  >></d-button>
+</div>

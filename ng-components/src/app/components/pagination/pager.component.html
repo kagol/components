@@ -1,0 +1,9 @@
+<ul class="m-pager">
+  <li [ngClass]="{
+      number: true,
+      active: page[0] == current
+    }" 
+    *ngFor="let page of pages" 
+    (click)="clickPage($event, page)"
+  >{{page[1].label}}</li>
+</ul>
