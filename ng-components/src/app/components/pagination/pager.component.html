@@ -1,9 +1,26 @@
 <ul class="m-pager">
   <li [ngClass]="{
       number: true,
-      active: page[0] == current
+      active: 1 == current
     }" 
-    *ngFor="let page of pages" 
+    (click)="clickPage($event, 1)"
+  >1</li>
+  <li *ngIf="current >= centerSize && pages.length >= startEllipsisSize" class="more left" 
+    (click)="leftMorePage($event)"
+  ></li>
+  <li *ngFor="let page of centerPages" [ngClass]="{
+      number: true,
+      active: page == current
+    }" 
     (click)="clickPage($event, page)"
-  >{{page[1].label}}</li>
+  >{{ page }}</li>
+  <li *ngIf="current <= pages.length - centerSize + 1 && pages.length >= startEllipsisSize" class="more right" 
+    (click)="rightMorePage($event)"
+  ></li>
+  <li *ngIf="pages.length !== 1" [ngClass]="{
+      number: true,
+      active: pages.length == current
+    }" 
+    (click)="clickPage($event, pages.length)"
+  >{{ pages.length }}</li>
 </ul>
