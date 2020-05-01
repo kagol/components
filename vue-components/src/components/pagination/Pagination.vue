@@ -1,7 +1,7 @@
 <template>
   <div class="m-pagination">
     <Button class="btn-prev" @click="setPage(current - 1)">&lt;</Button>
-    <Pager v-bind:total-page="totalPage" v-bind:default-current="current" v-on:change="onChange"></Pager>
+    <Pager :total-page="totalPage" :default-current="current" @change="onChange"></Pager>
     <Button class="btn-next" @click="setPage(current + 1)">></Button>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <ul class="m-list">
-    <li v-for="list in dataSource" :key="list.id">
+    <li v-for="list in lists" :key="list.id">
       {{ list.name }}
     </li>
   </ul>
@@ -14,10 +14,16 @@ export default {
       type: Array
     }
   },
+  data() {
+    return {
+      lists: this.dataSource
+    }
+  },
   watch: {
+    // 对dataSource进行监听，如果发生变化
     dataSource: {
       handler(newValue, oldValue) {
-        this.dataSource = newValue;
+        this.lists = newValue;
       }
     }
   }

@@ -2,8 +2,8 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App by kagol"/>
-    <List v-bind:data-source="dataSource" />
-    <Pagination v-bind:default-current="defaultCurrent" v-bind:default-page-size="pageSize" v-bind:total="total" v-on:change="onChange" />
+    <List :data-source="dataSource" />
+    <Pagination :default-current="defaultCurrent" :default-page-size="pageSize" :total="total" @change="onChange" />
   </div>
 </template>
 
