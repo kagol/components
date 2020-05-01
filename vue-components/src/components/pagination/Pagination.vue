@@ -1,8 +1,8 @@
 <template>
   <div class="m-pagination">
-    <Button class="btn-prev" v-on:click="prevPage">&lt;</Button>
+    <Button class="btn-prev" @click="setPage(current - 1)">&lt;</Button>
     <Pager v-bind:total-page="totalPage" v-bind:default-current="current" v-on:change="onChange"></Pager>
-    <Button class="btn-next" v-on:click="nextPage">></Button>
+    <Button class="btn-next" @click="setPage(current + 1)">></Button>
   </div>
 </template>
 
@@ -35,23 +35,18 @@ export default {
   data() {
     return {
       current: this.defaultCurrent,
-      pageSize: this.defaultPageSize,
     }
   },
   computed: {
     totalPage: function () {
-      return Math.ceil(this.total / this.pageSize);
+      return Math.ceil(this.total / this.defaultPageSize);
     },
   },
   methods: {
-    prevPage() {
-      if (this.current < 2) return;
-      this.current--;
-      this.$emit('change', this.current);
-    },
-    nextPage() {
-      if (this.current > this.totalPage - 1) return;
-      this.current++;
+    setPage(page) {
+      if (page < 1) return;
+      if (page > this.totalPage) return;
+      this.current = page;
       this.$emit('change', this.current);
     },
     onChange(current) {
