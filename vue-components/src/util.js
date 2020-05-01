@@ -1,10 +1,10 @@
 // 将数组按指定大小分块
 export const chunk = (arr = [], size = 1) => arr.length 
-  ? arr.reduce((t, v) => (
-      t[t.length - 1].length === size 
-        ? t.push([v]) 
-        : t[t.length - 1].push(v), 
-      t
+  ? arr.reduce((total, currentValue) => (
+      total[total.length - 1].length === size 
+        ? total.push([currentValue]) 
+        : total[total.length - 1].push(currentValue), 
+      total
     ), [[]])
   : [];
 

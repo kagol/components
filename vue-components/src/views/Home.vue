@@ -2,8 +2,8 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App by kagol"/>
-    <List :data-source="dataSource" />
-    <Pagination :default-current="defaultCurrent" :default-page-size="pageSize" :total="total" @change="onChange" />
+    <List :data-source="dataList" />
+    <Pagination :default-current="defaultCurrent" :default-page-size="defaultPageSize" :total="total" @change="onChange" />
   </div>
 </template>
 
@@ -25,20 +25,20 @@ export default {
   data() {
     return {
       defaultCurrent: 1,
-      pageSize: 2,
+      defaultPageSize: 3,
       total: lists.length,
-      dataSource: [],
+      dataList: [],
     }
   },
   created() {
-    this.dataSource = chunk(lists, this.pageSize)[this.defaultCurrent - 1];
+    this.setList(this.defaultCurrent, this.defaultPageSize);
   },
   methods: {
     onChange(current) {
-      this.setLists(current, this.pageSize);
+      this.setList(current, this.defaultPageSize);
     },
-    setLists: function(page, pageSize) {
-      this.dataSource = chunk(lists, pageSize)[page - 1];
+    setList: function(current, pageSize) {
+      this.dataList = chunk(lists, pageSize)[current - 1];
     }
   }
 };
