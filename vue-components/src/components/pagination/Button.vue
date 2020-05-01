@@ -1,16 +1,9 @@
 <template>
-  <button type="button" v-on:click="onClick"><slot></slot></button>
+  <button type="button" @click="$emit('click')"><slot></slot></button>
 </template>
 
 <script>
 export default {
   name: 'Button',
-  components: {
-  },
-  methods: {
-    onClick() {
-      this.$emit('click');
-    }
-  }
 };
 </script>
