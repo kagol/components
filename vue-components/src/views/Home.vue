@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       defaultCurrent: 1,
-      defaultPageSize: 3,
+      defaultPageSize: 4,
       total: lists.length,
       dataList: [],
     }

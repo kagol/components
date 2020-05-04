@@ -1,18 +1,39 @@
 <template>
   <ul class="x-pager">
+    <!-- 首页 -->
     <li 
       class="number" 
-      :class="{ active: this.current == 1 }" 
+      :class="{ active: current == 1 }" 
       @click="setPage(1)"
     >1</li>
 
-    <li class="more left"></li>
-    <li class="number"></li>
-    <li class="more right"></li>
+    <!-- 左更多按钮 -->
+    <li 
+      class="more left"
+      v-if="totalPage > centerSize + 2 && current >= centerSize"
+      @click="setPage(current - jumpSize)"
+    ></li>
+
+    <!-- 中间页码组 -->
+    <li 
+      class="number"
+      :class="{ active: current === page }"
+      v-for="(page, index) in centerPages"
+      :key="index"
+      @click="setPage(page)"
+    >{{ page }}</li>
+
+    <!-- 右更多按钮 -->
+    <li
+      class="more right"
+      v-if="totalPage > centerSize + 2 && current <= totalPage - centerSize + 1"
+      @click="setPage(current + jumpSize)"
+    ></li>
     
+    <!-- 尾页 -->
     <li 
       class="number" 
-      :class="{ active: this.current == totalPage }"
+      :class="{ active: current == totalPage }"
       v-if="totalPage !== 1" 
       @click="setPage(totalPage)"
     >{{ totalPage }}</li>
@@ -31,6 +52,8 @@ export default {
   },
   data() {
     return {
+      centerSize: 5,
+      jumpSize: 5,
       current: this.defaultCurrent,
       pages: generatePages(this.totalPage),
     }
@@ -39,6 +62,30 @@ export default {
     defaultCurrent: {
       handler(newValue, oldValue) {
         this.current = newValue;
+      }
+    }
+  },
+  computed: {
+    centerPages: function() {
+      let centerPage = this.current;
+      if (this.current > this.totalPage - 3) {
+        centerPage = this.totalPage - 3;
+      }
+      if (this.current < 4) {
+        centerPage = 4;
+      }
+      if (this.totalPage <= this.centerSize + 2) {
+        const centerArr = [];
+        for (let i = 2; i < this.totalPage; i++) {
+          centerArr.push(i);
+        }
+        return centerArr;
+      } else {
+        const centerArr = [];
+        for (let i = centerPage - 2; i <= centerPage + 2; i++) {
+          centerArr.push(i);
+        }
+        return centerArr;
       }
     }
   },
