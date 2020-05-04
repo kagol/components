@@ -3,24 +3,24 @@
       number: true,
       active: 1 == current
     }" 
-    (click)="clickPage($event, 1)"
+    (click)="setPage($event, 1)"
   >1</li>
-  <li *ngIf="current >= centerSize && pages.length >= startEllipsisSize" class="more left" 
-    (click)="leftMorePage($event)"
+  <li *ngIf="current >= centerSize && totalPage > centerSize + 2" class="more left" 
+    (click)="setPage($event, current - centerSize)"
   ></li>
   <li *ngFor="let page of centerPages" [ngClass]="{
       number: true,
       active: page == current
     }" 
-    (click)="clickPage($event, page)"
+    (click)="setPage($event, page)"
   >{{ page }}</li>
-  <li *ngIf="current <= pages.length - centerSize + 1 && pages.length >= startEllipsisSize" class="more right" 
-    (click)="rightMorePage($event)"
+  <li *ngIf="current <= totalPage - centerSize + 1 && totalPage > centerSize + 2" class="more right" 
+    (click)="setPage($event, current + centerSize)"
   ></li>
-  <li *ngIf="pages.length !== 1" [ngClass]="{
+  <li *ngIf="totalPage !== 1" [ngClass]="{
       number: true,
-      active: pages.length == current
+      active: totalPage == current
     }" 
-    (click)="clickPage($event, pages.length)"
-  >{{ pages.length }}</li>
+    (click)="setPage($event, totalPage)"
+  >{{ totalPage }}</li>
 </ul>

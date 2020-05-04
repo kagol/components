@@ -1,85 +1,52 @@
-import { Component, Input, Output, EventEmitter, OnInit, SimpleChanges } from "@angular/core";
-import { generatePages } from 'src/app/util';
+import { Component, Input, Output, EventEmitter, SimpleChanges } from "@angular/core";
 
 @Component({
   selector: 'd-pager',
   templateUrl: './pager.component.html',
   styleUrls: ['./pager.component.scss']
 })
-export class PagerComponent implements OnInit {
+export class PagerComponent {
   @Input() totalPage: number;
-  @Input() defaultCurrent = 1;
+  @Input() defaultCurrent: number;
   @Output() onChange = new EventEmitter();
 
-  pages;
-  current = this.defaultCurrent;
-
-  centerPages = [];
-
-  centerSize = 5; // 中间的页数，默认为5
-
-  // 以下字段均基于 centerSize 计算而来
-  sideSize = (this.centerSize - 1) / 2;
-  jumpSize = this.centerSize;
-  startEllipsisSize = this.centerSize + 3;
-  maxLeftSize = this.centerSize + 1;
-
-  ngOnInit() {
-    this.pages = Object.entries(generatePages(this.totalPage));
-    this.updateCenterPage();
-  }
-
-  updateCenterPage() {
+  @Input()
+  get centerPages() {
     let centerPage = this.current;
-    if (this.current > this.pages.length - 3) {
-      centerPage = this.pages.length - 3;
+    if (this.current > this.totalPage - 3) {
+      centerPage = this.totalPage - 3;
     }
     if (this.current < 4) {
       centerPage = 4;
     }
-    if (this.pages.length <= this.startEllipsisSize) {
-      const centerPage = [];
-      for (let i = 2, len = this.pages.length; i < len; i++) {
-        centerPage.push(i);
+    const centerArr = [];
+    if (this.totalPage < this.centerSize + 2) {
+      for (let i = 2; i < this.totalPage; i++) {
+        centerArr.push(i);
       }
-      this.centerPages = centerPage;
     } else {
-      this.centerPages = [centerPage - 2, centerPage - 1, centerPage, centerPage + 1, centerPage + 2 ];
+      for (let i = centerPage - 2; i <= centerPage + 2; i++) {
+        centerArr.push(i);
+      }
     }
+    return centerArr;
   }
 
-  clickPage($event, page) {
-    this.current = page;
-    this.updateCenterPage();
-    this.onChange.emit(this.current);
-  }
+  current = this.defaultCurrent;
+  centerSize = 5; // 中间的页数，默认为5
+  jumpSize = 5;
 
-  leftMorePage() {
-    let newPage = this.current - this.jumpSize;
-    if (newPage < 1) {
-      newPage = 1;
-    }
+  setPage($event, page) {
+    let newPage = page;
+    if (page < 1) newPage = 1;
+    if (newPage > this.totalPage) newPage = this.totalPage;
     this.current = newPage;
-    this.updateCenterPage();
-    this.onChange.emit(this.current);
-  }
-
-  rightMorePage() {
-    let newPage = this.current + this.jumpSize;
-    if (newPage > this.pages.length) {
-      newPage = this.pages.length;
-    }
-    this.current = newPage;
-    this.updateCenterPage();
     this.onChange.emit(this.current);
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.defaultCurrent && changes.defaultCurrent.currentValue) {
       this.current = changes.defaultCurrent.currentValue;
-
-      this.pages = Object.entries(generatePages(this.totalPage));
-      this.updateCenterPage();
     }
   }
 }

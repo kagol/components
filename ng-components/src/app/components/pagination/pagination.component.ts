@@ -13,8 +13,6 @@ export class PaginationComponent {
 
   @Input()
   get totalPage() {
-    console.log('this.total, this.defaultPageSize:', this.total, this.defaultPageSize);
-    console.log('totalPage:', Math.ceil(this.total / this.defaultPageSize));
     return Math.ceil(this.total / this.defaultPageSize);
   }
 
