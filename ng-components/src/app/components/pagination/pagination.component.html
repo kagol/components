@@ -1,7 +1,7 @@
 <div class="m-pagination">
   <d-button 
     class="btn-prev" 
-    (btnClick)="prevPage()"
+    (btnClick)="setPage(current - 1)"
   >&lt;</d-button>
   <d-pager 
     [totalPage]="totalPage" 
@@ -10,6 +10,6 @@
   ></d-pager>
   <d-button 
     class="btn-next" 
-    (btnClick)="nextPage()"
+    (btnClick)="setPage(current + 1)"
   >></d-button>
 </div>

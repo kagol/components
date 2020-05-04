@@ -20,18 +20,13 @@ export class PaginationComponent {
 
   current = this.defaultCurrent;
 
-  prevPage() {
+  setPage(page) {
     if (this.current < 2) return;
-    this.current--;
-    this.onChange.emit(this.current);
-  }
-
-  nextPage() {
     if (this.current > this.totalPage - 1) return;
-    this.current++;
+    this.current = page;
     this.onChange.emit(this.current);
   }
-
+  
   onPageChange(current) {
     this.current = current;
     this.onChange.emit(this.current);
