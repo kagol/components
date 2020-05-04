@@ -1,20 +1,16 @@
 // 将数组按指定大小分块
-export const chunk = (arr = [], size = 1) => arr.length 
-  ? arr.reduce((total, currentValue) => (
-      total[total.length - 1].length === size 
-        ? total.push([currentValue]) 
-        : total[total.length - 1].push(currentValue), 
-      total
-    ), [[]])
-  : [];
+export function chunk(arr = [], size = 1) {
+  if (arr.length === 0) return [];
+  return arr.reduce((total, currentValue) => {
+    if (total[total.length - 1].length === size) {
+      total.push([currentValue]);
+    } else {
+      total[total.length - 1].push(currentValue);
+    }
+    return total;
+  }, [[]]);
+}
 
-// 根据数据总数和每页大小生成页码对象（以页码为key）
 export function generatePages(totalPage) {
-  const pages = {};
-  for (let i = 1; i <= totalPage; i++) {
-    pages[i] = {
-      label: '' + i
-    };
-  }
-  return pages;
+  return new Array(totalPage).fill('').map((item, index) => index + 1);
 }
