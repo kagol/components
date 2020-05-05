@@ -8,11 +8,11 @@
 
 比如不同季节的三株白杨：
 
-![不同季节的三株白杨](./images/1.jpeg)
+![不同季节的三株白杨](https://github.com/kagol/components/blob/master/blog/images/1.jpeg)
 
 比如一天中不同时刻的浮翁大教堂：
 
-![一天中不同时刻的浮翁大教堂](./images/2.jpeg)
+![一天中不同时刻的浮翁大教堂](https://github.com/kagol/components/blob/master/blog/images/2.jpeg)
 
 如果同一个组件，用不同的框架实现，会有什么不同呢？
 
@@ -22,7 +22,7 @@
 
 我们要实现的分页组件大致效果如下：
 
-![分页组件需求](./images/3.jpeg)
+![分页组件需求](https://github.com/kagol/components/blob/master/blog/images/3.jpeg)
 
 主要包含以下功能：
 
@@ -40,20 +40,13 @@
 1. Button - 左右分页按钮
 2. Pager - 中间的分页器
 
-![分页组件模块图](./images/4.jpeg)
+![分页组件模块图](https://github.com/kagol/components/blob/master/blog/images/4.jpeg)
 
 ## 3 空的Pagination组件
 
 我们采用自上而下的方式创建组件，先创建一个空的Pagination组件。
 
-> 注意⚠️
-> 我使用的框架版本号如下：
-> node@10.15.1
-> vue-cli@3.7.0
-> vue@2.6.10
-> create-react-app@3.0.1
-> react@16.8.6
-> angular-cli@7.3.9\nangular@7.2.0
+> 注意⚠️<br>我使用的框架版本号如下：<br>node@10.15.1<br>vue-cli@3.7.0<br>vue@2.6.10<br>create-react-app@3.0.1<br>react@16.8.6<br>angular-cli@7.3.9<br>angular@7.2.0
 
 ### 3.1 Vue版本
 
@@ -65,7 +58,7 @@
 2. 分页器组件 - Pager.vue
 3. 分页组件 - Pagination.vue
 
-![Vue源码结构](./images/5.jpeg)
+![Vue源码结构](https://github.com/kagol/components/blob/master/blog/images/5.jpeg)
 
 在Pagination.vue文件中增加以下代码：
 
@@ -122,7 +115,7 @@ export default {
 
 以下是显示效果：
 
-![Vue版本空的Pagination效果图](./images/6.jpeg)
+![Vue版本空的Pagination效果图](https://github.com/kagol/components/blob/master/blog/images/6.jpeg)
 
 ### 3.2 React版本
 
@@ -134,7 +127,7 @@ export default {
 2. 分页器组件 - Pager.js
 3. 分页组件 - Pagination.js
 
-![React版本空的Pagination效果图](./images/7.jpeg)
+![React版本空的Pagination效果图](https://github.com/kagol/components/blob/master/blog/images/7.jpeg)
 
 在Pagination.js文件中增加以下代码：
 
@@ -195,7 +188,7 @@ export default App;
 3. 分页器组件 - pager.component.ts
 4. 分页组件 - pagination.component.ts
 
-![Angular版本空的Pagination效果图](./images/8.jpeg)
+![Angular版本空的Pagination效果图](https://github.com/kagol/components/blob/master/blog/images/8.jpeg)
 
 HTML/CSS可以放在ts文件里面，也可以放在单独的文件里。
 
@@ -755,7 +748,7 @@ created() {
 
 因此List组件将展示第1页的数据：
 
-![List组件第1页的数据](./images/10.jpeg)
+![List组件第1页的数据](https://github.com/kagol/components/blob/master/blog/images/10.jpeg)
 
 onChange事件是Pagination组件的页码改变事件，当点击上一个/下一页翻页按钮时执行，在该事件中可获取到当前的页码current。
 
@@ -811,11 +804,11 @@ export function chunk(arr = [], size = 1) {
 
 最终实现的分页效果如下：
 
-![List组件分页效果-第1页](./images/11.jpeg)
+![List组件分页效果-第1页](https://github.com/kagol/components/blob/master/blog/images/11.jpeg)
 
-![List组件分页效果-第3页](./images/12.jpeg)
+![List组件分页效果-第3页](https://github.com/kagol/components/blob/master/blog/images/12.jpeg)
 
-![List组件分页效果-最后1页](./images/13.jpeg)
+![List组件分页效果-最后1页](https://github.com/kagol/components/blob/master/blog/images/13.jpeg)
         
 现在做一个小小的总结，为了实现分页功能，我们：
 
@@ -972,8 +965,8 @@ const [dataSource, setLists] = useState(chunk(lists, defaultPageSize)[defaultCur
  
 |  框架   | 组件内部状态存放位置  | 改变组件内部状态的方式 |
 |  ----  | ----  | ----  |
-| React  | useState第1个返回值。\nconst [state, setState] = useState(initialState]; | useState第2个返回值（一个方法）。\nconst [state, setState] = useState(initialState]; |
-| Vue  | data方法中。\ndata() {\nreturn {\nstate: [],\n}\n} | methods对象中。\n\nmethods: {\nsetState: function() {\n// 执行具体的代码\n}\n} |
+| React  | useState第1个返回值。<br>const [state, setState] = useState(initialState]; | useState第2个返回值（一个方法）。<br>const [state, setState] = useState(initialState]; |
+| Vue  | data方法中。<br>data() {<br>return {<br>state: [],<br>}<br>} | methods对象中。<br><br>methods: {<br>setState: function() {<br>// 执行具体的代码<br>}<br>} |
 
 
 另外还有一个需要注意⚠️：
@@ -1014,16 +1007,16 @@ const [dataSource, setLists] = useState(chunk(lists, defaultPageSize)[defaultCur
 ``` JavaScript
 import { Component, Output, EventEmitter } from "@angular/core";
 @Component({
-selector: 'x-button',
-template: `
-<button type="button" (click)="onClick()"><ng-content></ng-content></button>
-`,
+  selector: 'x-button',
+  template: `
+    <button type="button" (click)="onClick()"><ng-content></ng-content></button>
+  `,
 })
 export class ButtonComponent {
-@Output() btnClick = new EventEmitter();
-onClick() {
-this.btnClick.emit();
-}
+  @Output() btnClick = new EventEmitter();
+  onClick() {
+    this.btnClick.emit();
+  }
 }
 ```
 
@@ -1038,8 +1031,8 @@ Angular和React/Vue的差别是很明显的：
 |  框架   | 绑定事件  | 定义插槽   | 外部事件  |
 |  ----  | ----  |----  | ----  |
 | Vue  | v-on指令（简写形式：@） | <slot>标签  | $emit() |
-| React  | props传递\nprops.onClick | props.children  | props传递，无需发射 |
-| Angular  | 括号符()\n(click)="btnClick()" | <ng-content>标签  | @Output()+emit() |
+| React  | props传递<br>props.onClick | props.children  | props传递，无需发射 |
+| Angular  | 括号符()<br>(click)="btnClick()" | <ng-content>标签  | @Output()+emit() |
 
 #### 5.1.2 在Pagination组件中使用Button组件
 
@@ -1150,7 +1143,7 @@ this.dataSource = chunk(lists, pageSize)[page - 1];
 
 我们再来回顾下分页组件的模块图：
 
-![分页组件的模块图](./images/14.jpeg)
+![分页组件的模块图](https://github.com/kagol/components/blob/master/blog/images/14.jpeg)
 
 中间显示页码的部分就是分页器，它的核心是页码显示和页码省略的逻辑。
 
@@ -1160,7 +1153,7 @@ this.dataSource = chunk(lists, pageSize)[page - 1];
 
 我们从当前页码出发，比如模块图中当前页码是第5页：
 
-![模块图中当前页码是第5页](./images/15.jpeg)
+![模块图中当前页码是第5页](https://github.com/kagol/components/blob/master/blog/images/15.jpeg)
 
 那么以该页码为中心，两边显示一定的页码，比如两边各显示2页；
 另外首页和尾页需要始终显示出来，方便回到首页和跳转到尾页；
@@ -1170,11 +1163,11 @@ this.dataSource = chunk(lists, pageSize)[page - 1];
 
 很简单，直接去掉右边的更多按钮就好：
 
-![只有8页怎么显示](./images/16.jpeg)
+![只有8页怎么显示](https://github.com/kagol/components/blob/master/blog/images/16.jpeg)
 
 如果当前页码在第4页呢？去掉左边的更多按钮，显示右边的更多按钮即可：
 
-![当前页码在第4页](./images/17.jpeg)
+![当前页码在第4页](https://github.com/kagol/components/blob/master/blog/images/17.jpeg)
 
 以上就是全部的页码显示策略。
 
@@ -1230,7 +1223,7 @@ export default {
 
 搭好基本框架之后，我们采取[最小可用产品](http://www.woshipm.com/pd/879821.html)（Minimum Viable Product，MVP）的思路：
 
-![最小可用产品](./images/MVP.jpeg)
+![最小可用产品](https://github.com/kagol/components/blob/master/blog/images/MVP.jpeg)
 
 分3步实现分页器功能：
 
@@ -1238,7 +1231,7 @@ export default {
 2. 第2步 实现快捷分页
 3. 第3步 实现分页按钮组
 
-![分3步实现分页器功能](./images/18.jpeg)
+![分3步实现分页器功能](https://github.com/kagol/components/blob/master/blog/images/18.jpeg)
 
 #### 6.2.3 第1步：首/尾页翻页逻辑
 
@@ -1304,7 +1297,7 @@ this.current = newPage; // 设置当前页码
 
 显示的效果如下：
 
-![首尾页显示效果](./images/19.jpeg)
+![首尾页显示效果](https://github.com/kagol/components/blob/master/blog/images/19.jpeg)
 
 #### 6.2.4 在Pagination组件中使用Pager组件
 
@@ -1336,7 +1329,7 @@ methods: {
 
 可以试试首/尾页的翻页效果：
 
-![首/尾页的翻页效果](./images/20.jpeg)
+![首/尾页的翻页效果](https://github.com/kagol/components/blob/master/blog/images/20.jpeg)
 
 #### 6.2.5 第2步：增加左/右更多按钮的翻页功能
 
@@ -1403,15 +1396,15 @@ methods: {
 
 初始在第1页：
 
-![初始在第1页](./images/21.jpeg)
+![初始在第1页](https://github.com/kagol/components/blob/master/blog/images/21.jpeg)
         
 点击右更多按钮之后（跳转到第6页）：
 
-![跳转到第6页](./images/22.jpeg)
+![跳转到第6页](https://github.com/kagol/components/blob/master/blog/images/22.jpeg)
         
 再点击右更多按钮（跳转到第11页）：
 
-![跳转到第11页](./images/23.jpeg)
+![跳转到第11页](https://github.com/kagol/components/blob/master/blog/images/23.jpeg)
         
 点击左更多按钮则又回到第6页，完美达到预期。
 
@@ -1482,19 +1475,19 @@ computed: {
 
 只有1页的情况：
 
-![跳转到第11页](./images/24.jpeg)
+![跳转到第11页](https://github.com/kagol/components/blob/master/blog/images/24.jpeg)
         
 <=7页的情况：
 
-![跳转到第11页](./images/25.jpeg)
+![跳转到第11页](https://github.com/kagol/components/blob/master/blog/images/25.jpeg)
         
 >7页且当前页码<=4页的情况：
 
-![跳转到第11页](./images/26.jpeg)
+![跳转到第11页](https://github.com/kagol/components/blob/master/blog/images/26.jpeg)
         
 >7页且当前页码>4页的情况：
 
-![跳转到第11页](./images/27.jpeg)
+![跳转到第11页](https://github.com/kagol/components/blob/master/blog/images/27.jpeg)
         
 至此，Vue版本分页器组件已全部实现，整个Pagination组件也全部实现。
 
@@ -1850,4 +1843,4 @@ get centerPages() {
 |  ----  | ----  | ----  | ----  | ----  | ----  | ----  | ----  | ----  | ----  | ----  | 
 | Vue  | props | $emit()  | 响应式 | v-for指令  | v-if指令 | v-bind:event（简写@event）  | data | <slot>  | computed | watch  | 
 | React  | props | props  | 函数组件 | {}包裹map  | {}包裹三目运算符 | onEvent  | useState | props.children  | 直接写 | useEffect  | 
-| Angular  | @Input() | @Output()\nemit()  | 面向对象 | *ngFor指令  | *ngIf指令 | (event)  | 直接写 | <ng-content>  | @Input() get | ngOnChanges  | 
+| Angular  | @Input() | @Output()<br>emit()  | 面向对象 | *ngFor指令  | *ngIf指令 | (event)  | 直接写 | <ng-content>  | @Input() get | ngOnChanges  | 
