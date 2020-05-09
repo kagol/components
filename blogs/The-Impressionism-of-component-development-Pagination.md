@@ -1844,3 +1844,5 @@ get centerPages() {
 | Vue  | props | $emit()  | 响应式 | v-for指令  | v-if指令 | v-bind:event（简写@event）  | data | <slot>  | computed | watch  | 
 | React  | props | props  | 函数组件 | {}包裹map  | {}包裹三目运算符 | onEvent  | useState | props.children  | 直接写 | useEffect  | 
 | Angular  | @Input() | @Output()<br>emit()  | 面向对象 | *ngFor指令  | *ngIf指令 | (event)  | 直接写 | <ng-content>  | @Input() get | ngOnChanges  | 
+  
+原文地址：[手把手教你使用Vue/React/Angular三大框架开发Pagination分页组件](https://juejin.im/post/5eb629c56fb9a043271c68aa)
