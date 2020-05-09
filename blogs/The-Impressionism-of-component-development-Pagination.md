@@ -1,5 +1,7 @@
 # 组件开发的“印象派”之Pagination分页组件
 
+原文地址：[手把手教你使用Vue/React/Angular三大框架开发Pagination分页组件](https://juejin.im/post/5eb629c56fb9a043271c68aa)
+
 ## 引言
 
 > “他在正午、黄昏，在一天里的许多时刻去感受它、记录它，结果也就让我们看到了那么多的不同。他描绘它的角度没变，但它的面目却极大地改变了。”
@@ -1845,4 +1847,4 @@ get centerPages() {
 | React  | props | props  | 函数组件 | {}包裹map  | {}包裹三目运算符 | onEvent  | useState | props.children  | 直接写 | useEffect  | 
 | Angular  | @Input() | @Output()<br>emit()  | 面向对象 | *ngFor指令  | *ngIf指令 | (event)  | 直接写 | <ng-content>  | @Input() get | ngOnChanges  | 
   
-原文地址：[手把手教你使用Vue/React/Angular三大框架开发Pagination分页组件](https://juejin.im/post/5eb629c56fb9a043271c68aa)
+
